@@ -8,5 +8,26 @@
   <maven.compiler.source>1.6</maven.compiler.source>
   <maven.compiler.target>1.6</maven.compiler.target>
 </properties>
+   <dependencies>
+    <dependency>
+      <groupId>org.sonarsource.sonarqube</groupId>
+      <artifactId>sonar-plugin-api</artifactId>
+      <!-- minimal version of SonarQube to support. -->
+      <!--  <version>6.7</version> -->
+      <!-- mandatory scope -->
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
   
+  <build>
+  <pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+       <!--  <version>3.7.0.1746</version> -->
+      </plugin>
+    </plugins>
+  </pluginManagement>
+</build>
 </project>
