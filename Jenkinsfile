@@ -1,8 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven 3.8.7'
-        
+        maven 'Maven'
     }
     environment {
         NODE_ENV='production'
