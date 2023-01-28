@@ -1,26 +1,34 @@
 pipeline {
     agent any
+    tools {maven "Maven" }
+    environment {
+        NODE_ENV='production'
+    }
+    
+  
     stages {
-        stage('Build') {
+        stage('source') {
             steps {
-                sh 'mvn -f hello-app/pom.xml -B -DskipTests clean install package'
+               git 'https://github.com/NidhiThakur12/DevopsLearn.git'
+
             }
-            post {
-                success {
-                    echo "Now Archiving the Artifacts....."
-                    archiveArtifacts artifacts: '**/*.jar'
-                }
-            }
-        }
-        stage('Test') {
+            }            
+        
+         stage('build') {
             steps {
-                sh 'mvn -f hello-app/pom.xml test'
+                sh 'mvn -f DevopsLearn/pom.xml -B -DskipTests clean install package'
             }
-            post {
-                always {
-                    junit 'hello-app/target/surefire-reports/*.xml'
-                }
-            }
+            
         }
+        
+         stage('saveArtifact') {
+            steps {
+              archiveArtifacts artifacts: '**', followSymlinks: false
+            }
+            
+        }
+        
+        
+        
     }
 }
