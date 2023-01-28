@@ -18,7 +18,7 @@ pipeline {
         
          stage('build') {
             steps {
-                sh 'mvn -f pom.xml -B -Dmaven.test.failure.ignore=true install'
+                sh 'mvn -f pom.xml -B -Dmaven clean install'
             }
             
         }
