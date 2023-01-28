@@ -1,6 +1,9 @@
 pipeline {
     agent any
-    tools {maven "Maven" }
+    tools {
+        maven 'Maven 3.8.7'
+        jdk 'jdk8'
+    }
     environment {
         NODE_ENV='production'
     }
@@ -16,7 +19,7 @@ pipeline {
         
          stage('build') {
             steps {
-                sh 'mvn -f DevopsLearn/pom.xml -B -DskipTests clean install package'
+                sh 'mvn -f DevopsLearn/pom.xml -B -Dmaven.test.failure.ignore=true install'
             }
             
         }
