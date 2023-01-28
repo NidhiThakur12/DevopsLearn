@@ -10,12 +10,13 @@ pipeline {
         stage('source') {
             steps {
                git 'https://github.com/NidhiThakur12/DevopsLearn.git'
+
             }
             }            
         
          stage('build') {
             steps {
-                sh 'mvn -f DevopsLearn/pom.xml -B -DskipTests clean package'
+                sh 'mvn -f DevopsLearn/pom.xml -B -DskipTests clean install package'
             }
             
         }
