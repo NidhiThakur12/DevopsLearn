@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'Maven 3.8.7'
-        jdk 'jdk8'
+        
     }
     environment {
         NODE_ENV='production'
