@@ -5,7 +5,7 @@ pipeline {
         maven 'Maven'
     }
     environment {
-        dockerhub=credential("Docker-hub")
+        NODE_ENV='production'
     }
     
   
